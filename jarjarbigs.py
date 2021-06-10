@@ -74,7 +74,10 @@ def extract_archive(archive_file):
 	temp_dir = tempfile.mkdtemp(prefix = "jarjarbigs")
 
 	archive = zipfile.ZipFile(archive_file, 'r')
-	archive.extractall(temp_dir)
+	try:
+		archive.extractall(temp_dir)
+	except FileExistsError as file_exists_error:
+		print("[-] Warning! The archive \"{archive_file}\" seems to have a broken file structure. Found douplicate file when trying to write to \"{error_filepath}\". Continuing anyway, result most likely incomplete (please check the contents of the affected archive).".format(archive_file=archive_file, error_filepath=str(file_exists_error.filename)))
 
 	directories = [temp_dir]
 
