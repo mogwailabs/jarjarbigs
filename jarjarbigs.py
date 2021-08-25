@@ -84,8 +84,11 @@ def extract_archive(archive_file):
 		print("[+] new archive(s) found: " + str(dir_archives))
 
 		for new_archive in dir_archives:
-			tmp_dirs = extract_archive(new_archive)
-			directories += tmp_dirs
+			if os.path.isfile(new_archive):
+				tmp_dirs = extract_archive(new_archive)
+				directories += tmp_dirs
+			else:
+				print("[-] fake jar directory found: " + str(new_archive))
 
 	return directories
 
