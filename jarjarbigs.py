@@ -88,7 +88,7 @@ def extract_archive(archive_file):
 				tmp_dirs = extract_archive(new_archive)
 				directories += tmp_dirs
 			else:
-				print("[-] fake jar directory found: " + str(new_archive))
+				print("[?] Discovered folder which has a .jar \"extension\": " + str(new_archive))
 
 	return directories
 
