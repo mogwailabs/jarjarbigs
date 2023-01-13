@@ -30,6 +30,7 @@ def copy_class_files(archive, source, destination):
 	for class_file in class_files:
 		current_path = os.path.dirname(class_file)[len(source):]
 		current_path = current_path.replace('WEB-INF/classes/', '')
+		current_path = current_path.replace('BOOT-INF/classes/', '')
 		current_file = os.path.basename(class_file)
 		destination_path = destination + current_path
 		if not destination_path.endswith("/"):
